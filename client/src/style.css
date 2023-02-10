@@ -10,10 +10,11 @@ body {
   background-color: #121215;
 }
 
-.messages {
+.messages-list {
   list-style: none;
-  margin: 4rem 6rem;
-  padding: 0rem;
+  margin: 0rem;
+  padding-top: 2rem;
+  padding-left: 4rem;
 }
 
 .time {

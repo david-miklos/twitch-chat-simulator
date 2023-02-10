@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import Message from "./Message";
 
@@ -12,17 +12,23 @@ function connectToServer() {
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const listRef = useRef(null);
+
   useEffect(() => {
     const socket = connectToServer();
     socket.on("chat-message", (message) => {
       setMessages((messages) => [...messages, message]);
+      listRef.current.lastChild.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
     return () => socket.disconnect();
   }, []);
 
   return (
     <div>
-      <ul className="messages">
+      <ul ref={listRef} className="messages-list">
         {messages.map((message, index) => (
           <li key={index}>
             <Message
