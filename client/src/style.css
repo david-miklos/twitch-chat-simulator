@@ -7,3 +7,28 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+.messages {
+  list-style: none;
+  margin: 4rem 6rem;
+  padding: 0rem;
+}
+
+.message {
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.li:last-child {
+  margin-bottom: 0rem;
+}
+
+.username {
+  margin-right: 0.25rem;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}

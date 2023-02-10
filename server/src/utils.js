@@ -16,36 +16,47 @@ const messages = [
   "pizza is so much better then tacos duuuude",
 ];
 
+const colors = [
+  "Blue",
+  "Coral",
+  "DodgerBlue",
+  "SpringGreen",
+  "YellowGreen",
+  "Green",
+  "OrangeRed",
+  "Red",
+  "GoldenRod",
+  "HotPink",
+  "CadetBlue",
+  "SeaGreen",
+  "Chocolate",
+  "BlueViolet",
+  "Firebrick",
+];
+
 const getCurrentTime = () => {
   const date = new Date();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
+  const hour = addLeadingZeros(date.getHours());
+  const minute = addLeadingZeros(date.getMinutes());
+  const second = addLeadingZeros(date.getSeconds());
 
   return `${hour}:${minute}:${second}`;
 };
 
-const getRandomMessage = () => {
-  return messages[Math.floor(Math.random() * messages.length)];
+const addLeadingZeros = (num) => {
+  return num < 10 ? "0" + num : num;
 };
 
-const generateRandomHexColor = () => {
-  const COLOR_CODE_LENGTH = 6;
-  const characters = "0123456789ABCDEF";
-  const symbol = "#";
-  let colorCode = "";
-  for (let i = 0; i < COLOR_CODE_LENGTH; i++) {
-    colorCode += characters[Math.floor(Math.random() * characters.length)];
-  }
-  return symbol + colorCode;
+const getRandom = (arr) => {
+  return arr[Math.floor(Math.random() * arr.length)];
 };
 
 const createMessage = () => {
   return {
     time: getCurrentTime(),
     username: generateUsername(),
-    body: getRandomMessage(),
-    color: generateRandomHexColor(),
+    body: getRandom(messages),
+    color: getRandom(colors),
   };
 };
 
