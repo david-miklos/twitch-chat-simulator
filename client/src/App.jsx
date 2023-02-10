@@ -39,6 +39,7 @@ function App() {
 
   return (
     <div>
+      <h1 className="title">The REAL Twitch Chat</h1>
       <ul ref={listRef} className="messages-list">
         {messages.map((message, index) => (
           <li key={index}>

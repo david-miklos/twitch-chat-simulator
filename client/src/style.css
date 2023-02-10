@@ -10,6 +10,13 @@ body {
   background-color: #121215;
 }
 
+.title {
+  color: #efeff1;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-left: 4rem;
+}
+
 .messages-list {
   list-style: none;
   margin: 0rem;
