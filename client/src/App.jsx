@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { flushSync } from "react-dom";
 import { io } from "socket.io-client";
 import Message from "./Message";
 
@@ -13,15 +14,25 @@ function connectToServer() {
 function App() {
   const [messages, setMessages] = useState([]);
   const listRef = useRef(null);
+  function scrollToLastMessage() {
+    listRef.current?.lastChild?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
+  // // One way of scrolling to last message ; without using flushSync
+  // useEffect(() => {
+  //   scrollToLastMessage()
+  // }, [messages]);
 
   useEffect(() => {
     const socket = connectToServer();
     socket.on("chat-message", (message) => {
-      setMessages((messages) => [...messages, message]);
-      listRef.current.lastChild.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      flushSync(() => {
+        setMessages((messages) => [...messages, message]);
       });
+      scrollToLastMessage();
     });
     return () => socket.disconnect();
   }, []);
