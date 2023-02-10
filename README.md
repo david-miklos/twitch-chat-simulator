@@ -1,4 +1,4 @@
-# twitch-chat-simulator
+# Twitch chat simulator
 
 ## How to run?
 
