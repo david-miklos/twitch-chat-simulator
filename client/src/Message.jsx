@@ -1,7 +1,7 @@
 function Message({ time, username, body, color }) {
   return (
     <div className="message row">
-      <div>{time}</div>
+      <div className="time">{time}</div>
       <div className="message-body row">
         <div className="username" style={{ color: color }}>
           {username}:
